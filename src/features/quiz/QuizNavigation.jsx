@@ -12,12 +12,12 @@ export const QuizNavigation = () => {
 
   // Next Quiz
   const onClickNextQuiz = () => {
-    dispatch(nextQuiz);
+    dispatch(nextQuiz());
   };
 
   // Goto Prev Quiz
   const onClickPrevQuiz = () => {
-    dispatch(prevQuiz);
+    dispatch(prevQuiz());
   };
 
   // Submit quiz

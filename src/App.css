@@ -153,6 +153,7 @@ header {
   display: inline-block;
   border-radius: 0.2rem;
   color: darkcyan;
+  border: none;
 }
 .tag-search-button {
   padding: 0.7rem 1rem;
@@ -195,7 +196,7 @@ header {
   text-align: center;
   border-radius: 50%;
   border: 0.1rem solid transparent;
-  margin: 0 0.4rem;
+  margin: 0.4rem;
 }
 .link.question.active {
   border-color: darkcyan;
@@ -343,3 +344,9 @@ footer {
   padding: 2rem 1rem 0 2rem;
 }
 
+.question-wrapper {
+  padding: 0 2rem;
+}
+.currect-quiz {
+  display: inline-block;
+}

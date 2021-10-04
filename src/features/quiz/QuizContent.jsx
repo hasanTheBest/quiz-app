@@ -6,17 +6,15 @@ import { QuizQuestionTitle } from "./QuizQuestionTitle";
 import { QuizTotalQuestion } from "./QuizTotalQuestion";
 
 export const QuizContent = () => {
-
-  return(
+  return (
     <>
-    <QuizContentHeader />
-    <div className="question-wrapper">
-      <QuizQuestionTitle />
-      <QuizTotalQuestion />
-      <QuizQuestionOptions />
-      <QuizNavigation />
-    </div>
-  </>
-
-  )
+      <div className="question-wrapper">
+        <QuizContentHeader />
+        <QuizTotalQuestion />
+        <QuizQuestionTitle />
+        <QuizQuestionOptions />
+        <QuizNavigation />
+      </div>
+    </>
+  );
 };

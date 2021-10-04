@@ -10,16 +10,13 @@ export const Filter = () => {
 
   const dispatch = useDispatch();
 
-  const changeCategory = (cat) => setCategory(cat)
-  const changeDifficulty = (d) => setDifficulty(d)
-  const changeLimit = (l) => setLimit(l)
+  const changeCategory = (cat) => setCategory(cat);
+  const changeDifficulty = (d) => setDifficulty(d);
+  const changeLimit = (l) => setLimit(l);
 
-  
   const clickFilterButton = () => {
-    dispatch(fetchQuizAsyncThunk({category, difficulty, limit}));
+    dispatch(fetchQuizAsyncThunk({ category, difficulty, limit }));
   };
-
-
 
   const catOptions = [
     ["Linux", 99],
@@ -35,7 +32,7 @@ export const Filter = () => {
     ["DevOps", 23],
   ].map(([name, count]) => (
     <option key={name} value={name} onClick={() => changeCategory(name)}>
-      {`${name} (${count})`} 
+      {`${name} (${count})`}
     </option>
   ));
 
@@ -54,7 +51,7 @@ export const Filter = () => {
   return (
     <div className="filter">
       <div className="filter-item categories">
-        <label className="input-label" for="categories">
+        <label className="input-label" htmlFor="categories">
           Category
         </label>
         <select className="filter-input" name="categories" id="categories">
@@ -63,7 +60,7 @@ export const Filter = () => {
         </select>
       </div>
       <div className="filter-item difficulties">
-        <label className="input-label" for="difficulties">
+        <label className="input-label" htmlFor="difficulties">
           Difficulty
         </label>
         <select className="filter-input" name="difficulties" id="difficulties">
@@ -72,7 +69,7 @@ export const Filter = () => {
         </select>
       </div>
       <div className="filter-item limit">
-        <label className="input-label" for="limit">
+        <label className="input-label" htmlFor="limit">
           Limit
         </label>
         <select className="filter-input" name="limit" id="limit">
@@ -84,7 +81,8 @@ export const Filter = () => {
         <button
           className="button-submit"
           type="button"
-          onClick={clickFilterButton}>
+          onClick={clickFilterButton}
+        >
           Filter
         </button>
       </div>

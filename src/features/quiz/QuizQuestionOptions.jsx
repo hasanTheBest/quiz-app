@@ -1,12 +1,14 @@
 import classNames from "classnames";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { justifyQuizAnswer, selectAllQuizIds, selectCurrent, selectQuizById } from "./quizSlice";
 
 export const QuizQuestionOptions = () => {
-  const quizIds = useSelector(selectAllQuizIds);
   const current = useSelector(selectCurrent);
+  const quizIds = useSelector(selectAllQuizIds);
   const answerSheet = useSelector((state) => state.quiz.answerSheet);
+
+  const dispatch = useDispatch();
 
   const singleQuiz = useSelector((state) =>
     selectQuizById(state, quizIds[current])
@@ -14,24 +16,9 @@ export const QuizQuestionOptions = () => {
 
   const { id, answers, correct_answers } = singleQuiz ? singleQuiz : {};
 
-  // // Justify Quiz Answer
-  //   const justifyQuizAnswer = (qid, ans, oid, key_ans) => {
-  //       setAnswerSheet((state) => {
-  //     return {
-  //       ...state,
-  //       [qid]: {
-  //         isCorrect: ans === "true",
-  //         index: oid,
-  //         id: qid,
-  //         key_ans,
-  //       },
-  //     };
-  //   });
-
-  // // Increase Score
-  // if (ans === "true") {
-  //   setScore(score + 1);
-  // }
+  const onClickQuizOption = (id, value_ans, option_i, key_ans) => {
+    dispatch(justifyQuizAnswer({id, value_ans, option_i, key_ans}))
+  }
 
   // // Show next question
   // setTimeout(() => {
@@ -62,7 +49,7 @@ export const QuizQuestionOptions = () => {
         <li
           className={optionClasses}
           key={key}
-          onClick={() => justifyQuizAnswer(id, value_ans, option_i, key_ans)}
+          onClick={() => onClickQuizOption(id, value_ans, option_i, key_ans)}
         >
           {value}
         </li>

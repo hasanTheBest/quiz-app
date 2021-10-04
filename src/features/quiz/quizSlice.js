@@ -28,7 +28,12 @@ const quizSlice = createSlice({
   initialState: initialQuiz,
   reducers: {
     justifyQuizAnswer: (state, action) => {
-      const { qid, ans, oid, key_ans } = action.payload;
+      const {
+        id: qid,
+        value_ans: ans,
+        option_i: oid,
+        key_ans,
+      } = action.payload;
 
       // Add new field into answershet object
       state.answerSheet[qid] = {
@@ -44,22 +49,27 @@ const quizSlice = createSlice({
       }
 
       // Increase Current value
-      state.current++;
+      if(state.current < state.ids.length - 1) {
+        state.current++;
+      }
     },
 
-    nextQuiz: (state, action) => {
-      if (action.payload) {
-        state.current = action.payload;
-      } else if (state.current < state.ids.length - 1) {
+    nextQuiz: (state) => {
+       if(state.current < state.ids.length - 1) {
         state.current++;
       }
     },
 
     prevQuiz: (state) => {
       if (state.current > 0) {
-        state.current++;
+        state.current--;
       }
     },
+
+    specificQuiz: (state, action) => {
+      state.current = action.payload
+    },
+
   },
   extraReducers: (builder) => {
     builder
@@ -76,16 +86,15 @@ const quizSlice = createSlice({
   },
 });
 
-export const { justifyQuizAnswer, nextQuiz, prevQuiz } = quizSlice.actions;
-export const selectCurrent = (state) => state.current;
-export const selectScore = (state) => state.score;
-export const selectAnswerSheet = (state) => state.answerSheet;
+export const { justifyQuizAnswer, nextQuiz, prevQuiz, specificQuiz } = quizSlice.actions;
+export const selectCurrent = (state) => state.quiz.current;
+export const selectScore = (state) => state.quiz.score;
+export const selectAnswerSheet = (state) => state.quiz.answerSheet;
 
 export const {
   selectById: selectQuizById,
   selectAll: selectAllQuizs,
   selectIds: selectAllQuizIds,
-  selectEntities: selectQuizEntities,
 } = quizAdapter.getSelectors((state) => state.quiz);
 
 export default quizSlice.reducer;

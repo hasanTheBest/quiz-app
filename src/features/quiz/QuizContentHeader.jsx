@@ -8,6 +8,7 @@ export const QuizContentHeader = () => {
   const currentQuiz = useSelector((state) =>
     selectQuizById(state, qIds[current])
   );
+
   const { category } = currentQuiz ? currentQuiz : {};
 
   return (

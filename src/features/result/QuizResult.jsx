@@ -46,12 +46,9 @@ export const QuizResult = () => {
           correct: correct,
           wrong: wrong,
           skipped: skipped,
-          // "correct" : result[id]?.isCorrect,
-          // "wrong" : result[id]?.isCorrect === false,
-          // "skipped" : result[id] === undefined,
         });
+        
         return (
-          <>
             <div className="question-wrapper" key={id + current}>
               <h6 className={classes}>
                 <span className="question-number">{current + 1}.</span>{" "}
@@ -82,7 +79,6 @@ export const QuizResult = () => {
                 {tip && <div className="ans-explanation tip">{tip}</div>}
               </div>
             </div>
-          </>
         );
       }
     );
@@ -128,7 +124,7 @@ export const QuizResult = () => {
         />
       </div>
       <div className="result-person">
-        <h5 className="result-person-name">A Perticitpiant</h5>
+        <h5 className="result-person-name">A Perticipiant</h5>
 
         <div className="result-person-content">
           <div className="person-result-info">
