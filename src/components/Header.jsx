@@ -16,6 +16,6 @@ const location = useLocation();
       <Link to="/about" className={`link menu ${location.pathname === "/about" ? "active" : ""}`}>
         About
       </Link>
-    </nav>
+    </nav> 
   </header>)
 };

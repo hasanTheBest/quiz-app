@@ -1,9 +1,16 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { fetchQuizAsyncThunk } from "../../features/quiz/quizSlice";
+import { fetchQuizAsyncThunk, selectAllQuizIds, selectCurrent, selectQuizById } from "../../features/quiz/quizSlice";
 
-export const AsideTags = ({tags}) => {
+export const AsideTags = () => {
   const [tag, setTag] =  useState([])
+  const current = useSelector(selectCurrent)
+
+
+  const ids = useSelector(selectAllQuizIds)
+  const currentQuiz = useSelector(state => selectQuizById(state, ids[current]))
+  const {tags} =  currentQuiz ? currentQuiz : {}
 
   const dispatch = useDispatch();
 

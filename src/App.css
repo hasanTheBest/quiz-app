@@ -242,6 +242,7 @@ header {
 .quiz-result-wrapper{
   max-width: 900px;
   padding: 2rem;
+  margin: 0 auto;
 }
 .quiz-result-list-wraper{
   display: flex;
@@ -254,7 +255,6 @@ header {
   padding: 1rem;
 }
 .question.main.skipped {
-  /* background: #0080804d; */
   background: teal;
 }
 .question.main.wrong {
@@ -272,8 +272,74 @@ header {
   pointer-events: none;
 }
 
+/* ====== Result ====== */
+
+.quiz-header.result {
+  display: flex;
+  background-color: rgba(255, 255, 255, .1);
+  border-radius: 0 .5rem .5rem 0;
+  margin: 2rem 1rem;
+}
+.result-person-avatar {
+  display: block;
+  border-radius: 50%;
+  height: auto;
+  border: 0.5rem solid;
+  height: 150px;
+  width: 150px;
+}
+.person-avatar-wrapper {
+  background-color: darkslateblue;
+  border-radius: 0 0.5rem .5rem 0;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.person-result-info {
+  padding: 1rem;
+}
+.restult-person-meta {
+  padding: 1rem;
+}
+.result-info-group {
+  padding: 1rem 1.5rem;
+  background-color: darkslateblue;
+  margin: 1rem 0;
+  border-radius: .3rem;
+}
+.result-info-group.correct {
+  background-color: darkgreen;
+}
+.result-info-group.wrong {
+  background-color: darkred;
+}
+.result-info-group.skipped {
+  background-color: teal;
+}
+.result-info-group.score {
+  background: linear-gradient(60deg, teal, darkslateblue);
+}
+.result-info-group.status {
+  background: linear-gradient(60deg, darkcyan, darkorchid);
+}
+.result-info-group.remark {
+  background: linear-gradient(60deg, darkslateblue, teal);
+}
+
+
 footer {
   background-color: rgba(255, 255, 255, 0.1);
   padding: 1.3rem 1rem;
   text-align: center;
 }
+
+.result-person-content {
+  display: flex;
+  padding-left: 1rem;
+}
+.result-person-name {
+  font-size: 1.1rem;
+  padding: 2rem 1rem 0 2rem;
+}
+
