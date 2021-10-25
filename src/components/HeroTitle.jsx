@@ -1,13 +1,19 @@
-import React from 'react'
+import React from "react";
+import styled from "styled-components";
+
+const StyledHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+const Title = styled.h1``;
+const Subtitle = styled.h6``;
 
 export const HeroTitle = () => {
   return (
-    <div className="header">
-    <h1 className="title">The Ulitmate Tech Quiz</h1>
-    <h6 className="subtitle">Test your CS Web Tech knowledge</h6>
-  </div>
-
-    )
-
-}
-
+    <StyledHeader>
+      <Title>The Ultimate Tech Quiz</Title>
+      <Subtitle>Test your CS Web Tech knowledge</Subtitle>
+    </StyledHeader>
+  );
+};

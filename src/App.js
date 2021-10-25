@@ -8,14 +8,14 @@ import { Footer } from "./components/Footer";
 import { QuizAns } from "./features/quiz/QuizAns";
 import { QuizResult } from "./features/result/QuizResult";
 
-import "./App.css";
+// import "./App.css";
 // import { Quiz } from './features/quiz/Quiz';
 
 function App() {
   return (
     <div className="App">
       <Router>
-          <Header />
+        <Header />
         <Switch>
           <Route exact path="/">
             <HeroTitle />

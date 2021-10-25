@@ -1,6 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import styled from "styled-components";
 import { selectAllQuizIds, selectCurrent, selectQuizById } from "./quizSlice";
+
+const StyledQuizHeader = styled.h2`
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+`;
 
 export const QuizContentHeader = () => {
   const current = useSelector(selectCurrent);
@@ -12,11 +19,11 @@ export const QuizContentHeader = () => {
   const { category } = currentQuiz ? currentQuiz : {};
 
   return (
-    <h2 className="quiz-header">
+    <StyledQuizHeader>
       {category ? category : "Uncategorized"} -{" "}
-      <div className="currect-quiz">
+      <div>
         {current + 1}/{qIds.length}
       </div>
-    </h2>
+    </StyledQuizHeader>
   );
 };

@@ -1,62 +1,50 @@
-import React from 'react'
-import className from "classnames"
-import { useSelector, useDispatch } from 'react-redux';
-import { specificQuiz, selectAllQuizIds, selectAnswerSheet, selectCurrent } from './quizSlice';
+import React from "react";
+import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  specificQuiz,
+  selectAllQuizIds,
+  selectAnswerSheet,
+  selectCurrent,
+} from "./quizSlice";
+
+const StyledQNButton = styled.button`
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  background-color: ${(props) =>
+    props.answered ? `darkcyan` : `rgba(255, 255, 255, 0.1)`};
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+
+  ${(props) => props.active && `border-color: darkcyan`}
+`;
+
+const StyledQNWrapper = styled.div`
+  padding: 0.8rem 0;
+  margin-bottom: 1rem;
+  text-align: center;
+`;
 
 export const QuizTotalQuestion = () => {
-  
-  const quizIds = useSelector(selectAllQuizIds)
-  const current = useSelector(selectCurrent)
-  const answerSheet = useSelector(selectAnswerSheet)
+  const quizIds = useSelector(selectAllQuizIds);
+  const current = useSelector(selectCurrent);
+  const answerSheet = useSelector(selectAnswerSheet);
   const dispatch = useDispatch();
 
   const totalQuestions = quizIds.map((q, i) => {
-
-    let optionClases = className("link question", {
-      "active": current === i,
-      "answered": answerSheet.hasOwnProperty(quizIds[current]) &&  current === i,
-    })
-
-    // answerSheet && Object.keys(answerSheet).forEach(id => {
-    //   if(String(id) === String(quizIds[current])){
-    //     optionClases = "link question answered"
-    //   }
-    // })
-    
-    // console.log("answered question = " + i, Object.keys(answerSheet).indexOf(String(quizIds[current])), quizIds[current], Object.keys(answerSheet) )
-
-    // let questionClasses = `link question`;
-
-    // if (current === i) {
-    //   questionClasses = "link question active";
-    // }
-
-    // if (
-    //   current === i &&
-    //   Object.keys(answerSheet).indexOf(String(current)) !== -1
-    // ) {
-    //   questionClasses = "link question answered";
-    // }
-
-    // answerSheet && Object.keys(answerSheet).forEach((qn) => {
-    //   if (String(qn) === q) {
-    //     questionClasses = "link question answered";
-    //   }
-    // });
-
     return (
-      <button
+      <StyledQNButton
         key={"qOption" + q}
-        className={optionClases}
         onClick={() => dispatch(specificQuiz(i))}
+        active={current === i}
+        answered={answerSheet.hasOwnProperty(quizIds[current])}
       >
         {i + 1}
-      </button>
+      </StyledQNButton>
     );
   });
 
-  return (
-    <div className="question-number">{totalQuestions}</div>
-  )
-}
-
+  return <StyledQNWrapper>{totalQuestions}</StyledQNWrapper>;
+};
