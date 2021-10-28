@@ -6,7 +6,7 @@ import {
   StyledFilterSelectCategory,
 } from "./FilterItemCat";
 
-const FilterWrapper = styled(StyledFilterCategory)``;
+const StyledFilterWrapper = styled(StyledFilterCategory)``;
 const Label = styled(StyledFilterLabel)``;
 const Select = styled(StyledFilterSelectCategory)``;
 
@@ -18,12 +18,12 @@ export default function FilterItem({ label, options, setOption, option }) {
   ));
 
   return (
-    <FilterWrapper>
+    <StyledFilterWrapper>
       <Label htmlFor={label.toLowerCase()}>{label}</Label>
       <Select name={label.toLowerCase()} id={label.toLowerCase()}>
         <option value="">All</option>
         {catOptions}
       </Select>
-    </FilterWrapper>
+    </StyledFilterWrapper>
   );
 }

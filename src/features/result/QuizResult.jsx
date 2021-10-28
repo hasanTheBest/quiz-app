@@ -7,15 +7,14 @@ import { QuizResultHeader } from "./QuizResultHeader";
 import { selectResultEntities } from "./resultSlice";
 
 const StyledResultWrapper = styled.div`
+  margin: 0 auto;
   max-width: 900px;
   padding: 2rem;
-  margin: 0 auto;
 `;
 
 const StyledQuizResultContent = styled.div`
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
 `;
 
 export const QuizResult = () => {

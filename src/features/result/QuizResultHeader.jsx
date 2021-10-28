@@ -4,14 +4,23 @@ import styled from "styled-components";
 import { selectResultEntities } from "./resultSlice";
 
 const StyledQuizResultHeader = styled.div`
-  display: flex;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 0 0.5rem 0.5rem 0;
+  display: flex;
   margin: 2rem 1rem;
+
+  ${(p) => p.theme.breakpoints.md} {
+    flex-direction: column;
+  }
 `;
 
 const StyledResultPerson = styled.div`
   display: flex;
+  flex: 1 0 60%;
+
+  ${(p) => p.theme.breakpoints.sm} {
+    flex-direction: column;
+  }
 `;
 
 const StyledRPName = styled.h5`
@@ -20,13 +29,18 @@ const StyledRPName = styled.h5`
 `;
 
 const StyledRPAvatarWrapper = styled.div`
+  align-items: center;
   background-color: darkslateblue;
   border-radius: 0 0.5rem 0.5rem 0;
-  width: 200px;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem;
+  width: 200px;
+
+  ${(p) => p.theme.breakpoints.sm} {
+    width: 100%;
+  }
 `;
 
 const StyledRPAvatar = styled.img`
@@ -39,14 +53,19 @@ const StyledRPAvatar = styled.img`
 `;
 
 const StyledResultInfo = styled.div`
-  padding-left: 1rem;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 1.5rem 0 1.5rem 1.5rem;
+
+  ${(p) => p.theme.breakpoints.md} {
+    padding-right: 1.5rem;
+  }
 `;
 
 const StyledResultInfoGroup = styled.div`
-  padding: 1rem 1.5rem;
   background-color: darkslateblue;
-  margin: 1rem 0;
-  border-radius: 0.3rem;
+  flex: 1 0 50%;
+  padding: 1rem 1.5rem;
 
   &.correct {
     background-color: darkgreen;
@@ -55,7 +74,7 @@ const StyledResultInfoGroup = styled.div`
     background-color: darkred;
   }
   &.skipped {
-    background-color: teal;
+    background-color: darkslateblue;
   }
   &.score {
     background: linear-gradient(60deg, teal, darkslateblue);
@@ -69,7 +88,27 @@ const StyledResultInfoGroup = styled.div`
 `;
 
 const StyledPersonMeta = styled.div`
-  padding: 1rem;
+  display: flex;
+  flex: 1 0 40%;
+  flex-flow: column wrap;
+  padding: 1.5rem;
+  /* padding: 0 0 0 1.5rem; */
+
+  & > .result {
+    flex: 1 0 50%;
+
+    &.correct {
+      flex-basis: 100%;
+    }
+
+    /* ${(p) => p.theme.breakpoints.sm} {
+      flex-basis: 33.3%;
+
+      &.correct {
+        flex-grow: 2;
+      }
+    } */
+  }
 `;
 
 // const StyledPersonInfo = styled.div`
@@ -139,25 +178,19 @@ export const QuizResultHeader = ({
       </StyledResultPerson>
 
       <StyledPersonMeta>
-        <StyledResultInfoGroup className="correct">
+        <StyledResultInfoGroup className="result correct">
           <span>Correct: </span>
           <span>{correctCount}</span>
         </StyledResultInfoGroup>
-        <StyledResultInfoGroup className="wrong">
+        <StyledResultInfoGroup className="result wrong">
           <span>Wrong: </span>
           <span>{wrongCount}</span>
         </StyledResultInfoGroup>
-        <StyledResultInfoGroup className="skipped">
+        <StyledResultInfoGroup className="result skipped">
           <span>Skipped: </span>
           <span>{skippedCount}</span>
         </StyledResultInfoGroup>
       </StyledPersonMeta>
-      {/* Result - <b className="result status">Status:{resultStatus}</b>
-    <b className="result remark">Remark:{remark}</b>
-    <b className="result score">Score:{correctCount * 1}</b>
-    <b className="result correct">Correct:{correctCount}</b>
-    <b className="result wrong">Wrong:{wrongCount}</b>
-    <b className="result skipped">Skipped:{skippedCount}</b> */}
     </StyledQuizResultHeader>
   );
 };

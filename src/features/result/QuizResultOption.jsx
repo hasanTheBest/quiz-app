@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { StyledQuestionOption } from "../quiz/QuizQuestionOptions";
-// import classNames from "classnames";
 
 const StyledAnsOption = styled(StyledQuestionOption)`
+  background-color: ${(p) => p.theme.color.black_a3};
   ${(props) => props.correct && "background-color: darkgreen"}
-  ${(props) => props.skipped && "background-color: darkslateblue"}
+  ${(props) => props.skipped && "background-color: darkslateblue"};
 `;
 
 export const QuizResultOption = ({
@@ -16,12 +16,6 @@ export const QuizResultOption = ({
   if (value === null) {
     return null;
   }
-
-  //  const classes = classNames("question-option", {
-  //    "correct" : ans_value === "true" && answer?.isCorrect,
-  //    "wrong" : ans_value === "false" && answer?.key_ans === ans_key,
-  //    "skipped" : ans_value === "true",
-  //  })
 
   return (
     <StyledAnsOption

@@ -11,7 +11,7 @@ import {
 
 export const StyledQuestionOptionsWrapper = styled.div`
   padding: 1rem 1rem 1rem 3.5rem;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: ${(p) => p.theme.color.white_a1};
   border-radius: 0 0 0.2rem 0.2rem;
 `;
 

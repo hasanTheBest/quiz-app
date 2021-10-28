@@ -19,6 +19,12 @@ export const StyledFilterCategory = styled.div`
   margin-right: 1rem;
   display: flex;
   flex-direction: column;
+
+  ${(p) => p.theme.breakpoints.md} {
+    margin-bottom: 1.5rem;
+    width: 100%;
+    margin-right: 0;
+  }
 `;
 
 export const StyledFilterLabel = styled.label`
@@ -34,6 +40,10 @@ export const StyledFilterSelectCategory = styled.select`
   padding: 0.8rem 1.5rem;
   border: 0;
   border-radius: 0.2rem;
+
+  ${(p) => p.theme.breakpoints.md} {
+    width: 100%;
+  }
 `;
 
 export default function FilterItemCat({ option, setOption }) {

@@ -13,7 +13,7 @@ const StyledFilter = styled.div`
   display: flex;
   justify-content: center;
   padding: 2rem 1.5rem;
-  background: linear-gradient(45deg, darkslateblue, darkcyan, darkslateblue);
+  background: ${(p) => p.theme.color.grad_sb_c_sb};
   position: relative;
   z-index: 5;
   align-items: self-end;
@@ -29,14 +29,19 @@ const StyledFilter = styled.div`
     z-index: -1;
     margin-top: -4px;
   }
+
+  ${(p) => p.theme.breakpoints.md} {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
-const FilterBtnWrapper = styled.div`
+const StyledFilterBtnWrapper = styled.div`
   margin-right: 1rem;
   display: flex;
   flex-direction: column;
 `;
-const FilterBtn = styled.button`
+const StyledFilterBtn = styled.button`
   padding: 0.8rem 2rem;
   border: 0;
   border-radius: 0.2rem;
@@ -76,15 +81,11 @@ export const Filter = () => {
         value={limit}
         setOption={changeLimit}
       />
-      <FilterBtnWrapper className="filter-item filter-button">
-        <FilterBtn
-          className="button-submit"
-          type="button"
-          onClick={clickFilterButton}
-        >
+      <StyledFilterBtnWrapper>
+        <StyledFilterBtn type="button" onClick={clickFilterButton}>
           Filter
-        </FilterBtn>
-      </FilterBtnWrapper>
+        </StyledFilterBtn>
+      </StyledFilterBtnWrapper>
     </StyledFilter>
   );
 };

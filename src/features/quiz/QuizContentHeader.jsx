@@ -7,6 +7,17 @@ const StyledQuizHeader = styled.h2`
   letter-spacing: 1px;
   font-weight: 700;
   margin-bottom: 1.5rem;
+  display: flex;
+  flex: wrap;
+  justify-content: space-between;
+
+  & > div {
+    padding: 0.5rem;
+  }
+
+  ${(p) => p.theme.breakpoints.md} {
+    font-size: 1.2rem;
+  }
 `;
 
 export const QuizContentHeader = () => {
@@ -20,7 +31,7 @@ export const QuizContentHeader = () => {
 
   return (
     <StyledQuizHeader>
-      {category ? category : "Uncategorized"} -{" "}
+      <div>{category ? category : "Uncategorized"}</div>
       <div>
         {current + 1}/{qIds.length}
       </div>

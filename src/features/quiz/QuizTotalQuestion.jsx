@@ -17,6 +17,7 @@ const StyledQNButton = styled.button`
   display: inline-block;
   text-align: center;
   border-radius: 50%;
+  margin: 0.5rem;
 
   ${(props) => props.active && `border-color: darkcyan`}
 `;

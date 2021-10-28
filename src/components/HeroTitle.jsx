@@ -5,6 +5,10 @@ const StyledHeader = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  ${(p) => p.theme.breakpoints.md} {
+    display: none;
+  }
 `;
 const Title = styled.h1``;
 const Subtitle = styled.h6``;

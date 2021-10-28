@@ -11,7 +11,13 @@ import { fetchQuizAsyncThunk } from "./quizSlice";
 const StyledQuizContentWrapper = styled.main`
   display: flex;
   justify-content: center;
-  padding: 1rem;
+  padding: 2rem;
+`;
+
+const StyledAside = styled.aside`
+  ${(p) => p.theme.breakpoints.md} {
+    display: none;
+  }
 `;
 
 export const QuizAns = () => {
@@ -27,10 +33,10 @@ export const QuizAns = () => {
 
   return (
     <StyledQuizContentWrapper>
-      <aside>
+      <StyledAside>
         <AsideLinks />
         <AsideTags />
-      </aside>
+      </StyledAside>
 
       {status === "loading" ? (
         <h1>Await .....fetching data</h1>

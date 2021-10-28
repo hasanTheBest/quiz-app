@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import styled from "styled-components";
 import { submitQuiz } from "../result/resultSlice";
+import { QuizPopUp } from "./QuizPopUp";
 import { nextQuiz, prevQuiz, selectAnswerSheet } from "./quizSlice";
+
+const StyledNavigationBox = styled.div`
+  position: relative;
+`;
 
 const StyledQuizNavigation = styled.div`
   display: flex;
@@ -22,8 +27,10 @@ const StyledNavigationBtn = styled.button`
 `;
 
 export const QuizNavigation = () => {
-  const dispatch = useDispatch();
+  const [showPopup, setShowPopup] = useState(false);
+  const [sureSubmit, setSureSubmit] = useState(false);
   const answerSheet = useSelector(selectAnswerSheet);
+  const dispatch = useDispatch();
   const history = useHistory();
 
   // Next Quiz
@@ -37,23 +44,32 @@ export const QuizNavigation = () => {
   };
 
   // Submit quiz
-  const onClickSubmitQuiz = () => {
-    dispatch(submitQuiz(answerSheet));
-
-    history.push("/result");
+  const handleSubmitQuiz = () => {
+    setShowPopup(true);
   };
 
+  if (sureSubmit) {
+    dispatch(submitQuiz(answerSheet));
+    history.push("/result");
+  }
+
   return (
-    <StyledQuizNavigation>
-      <StyledNavigationBtn prev onClick={onClickPrevQuiz}>
-        Previous
-      </StyledNavigationBtn>
-      <StyledNavigationBtn submit onClick={onClickSubmitQuiz}>
-        submit
-      </StyledNavigationBtn>
-      <StyledNavigationBtn next onClick={onClickNextQuiz}>
-        Next
-      </StyledNavigationBtn>
-    </StyledQuizNavigation>
+    <>
+      <StyledQuizNavigation>
+        <StyledNavigationBtn prev onClick={onClickPrevQuiz}>
+          Previous
+        </StyledNavigationBtn>
+        <StyledNavigationBtn submit onClick={handleSubmitQuiz}>
+          submit
+        </StyledNavigationBtn>
+        <StyledNavigationBtn next onClick={onClickNextQuiz}>
+          Next
+        </StyledNavigationBtn>
+      </StyledQuizNavigation>
+
+      {showPopup && (
+        <QuizPopUp setShowPopup={setShowPopup} setSureSubmit={setSureSubmit} />
+      )}
+    </>
   );
 };
