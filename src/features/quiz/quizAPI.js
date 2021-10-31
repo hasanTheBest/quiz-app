@@ -4,13 +4,15 @@ export const fetchQuiz = async (endpoint) => {
   // const url = new URL("https://quizapi.io/api/v1/questions");
   const url = new URL("http://localhost:3000/markup/quizapi.json");
 
-  const {category, difficulty, limit, tags} = Boolean(endpoint) ? endpoint : {};
-  
+  const { category, difficulty, limit, tags } = Boolean(endpoint)
+    ? endpoint
+    : {};
+
   url.search = new URLSearchParams({
-  ...(Boolean(category) && {category}),
-  ...(Boolean(difficulty) && {difficulty}), 
-  ...(Boolean(limit) && {limit}),
-  ...(Boolean(tags) && {tags})
+    ...(Boolean(category) && { category }),
+    ...(Boolean(difficulty) && { difficulty }),
+    ...(Boolean(limit) && { limit }),
+    ...(Boolean(tags) && { tags }),
   });
 
   let data;
@@ -26,8 +28,8 @@ export const fetchQuiz = async (endpoint) => {
 
     data = await response.json();
   } catch (error) {
-    console.log( "fetch error = ", error);
+    console.log("fetch error = ", error);
   }
 
   return data;
-}
+};

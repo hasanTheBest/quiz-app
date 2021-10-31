@@ -1,5 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { selectAllQuizIds, selectAnswerSheet } from "./quizSlice";
 
 const StyledPopupBox = styled.div`
   display: block;
@@ -63,6 +65,8 @@ const StyledPopupCard = styled.div`
 `;
 
 export function QuizPopUp({ showPopup, setShowPopup, setSureSubmit }) {
+  const answered = useSelector(selectAnswerSheet);
+  const qIds = useSelector(selectAllQuizIds);
   const handleSubmit = () => {
     setShowPopup(false);
     setSureSubmit(true);
@@ -76,7 +80,8 @@ export function QuizPopUp({ showPopup, setShowPopup, setSureSubmit }) {
       <StyledPopupCard>
         <h4 className="title">Are you sure to submit the quiz?</h4>
         <p className="body">
-          You've answered <b>{}</b> out of the <b>{}</b>
+          You've answered <b>{Object.entries(answered).length}</b> out of the{" "}
+          <b>{qIds.length}</b>
         </p>
         <div className="popup-footer">
           <button className="submit" onClick={handleSubmit}>

@@ -66,18 +66,22 @@ const StyledResultInfoGroup = styled.div`
   background-color: darkslateblue;
   flex: 1 0 50%;
   padding: 1rem 1.5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-family: ${(p) => p.theme.color.white_a3};
 
-  &.correct {
-    background-color: darkgreen;
+  & > span:last-child {
+    font-size: 1.2rem;
   }
-  &.wrong {
-    background-color: darkred;
-  }
-  &.skipped {
-    background-color: darkslateblue;
-  }
+
   &.score {
     background: linear-gradient(60deg, teal, darkslateblue);
+    flex-basis: 100%;
+    & > span:last-child {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-left: 0.5rem;
+    }
   }
   &.status {
     background: linear-gradient(60deg, darkcyan, darkorchid);
@@ -92,13 +96,25 @@ const StyledPersonMeta = styled.div`
   flex: 1 0 40%;
   flex-flow: column wrap;
   padding: 1.5rem;
-  /* padding: 0 0 0 1.5rem; */
 
   & > .result {
     flex: 1 0 50%;
-
     &.correct {
       flex-basis: 100%;
+      background-color: darkgreen;
+      & > span {
+        display: block;
+        &:last-child {
+          font-size: 2rem;
+          text-align: center;
+        }
+      }
+    }
+    &.wrong {
+      background-color: darkred;
+    }
+    &.skipped {
+      background-color: darkslateblue;
     }
 
     /* ${(p) => p.theme.breakpoints.sm} {

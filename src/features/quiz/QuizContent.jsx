@@ -6,7 +6,11 @@ import { QuizQuestionOptions } from "./QuizQuestionOptions";
 import { QuizQuestionTitle } from "./QuizQuestionTitle";
 import { QuizTotalQuestion } from "./QuizTotalQuestion";
 
-const StyledQuestionWrapper = styled.div``;
+const StyledQuestionWrapper = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  max-width: 500px;
+`;
 
 export const QuizContent = () => {
   return (

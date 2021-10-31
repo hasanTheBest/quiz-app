@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
+import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import styled from "styled-components";
 
+import { QuizContent } from "./QuizContent";
 import { AsideLinks } from "../../components/aside/AsideLinks";
 import { AsideTags } from "../../components/aside/AsideTags";
-import { QuizContent } from "./QuizContent";
 import { fetchQuizAsyncThunk } from "./quizSlice";
 
 const StyledQuizContentWrapper = styled.main`
@@ -33,10 +33,10 @@ export const QuizAns = () => {
 
   return (
     <StyledQuizContentWrapper>
-      <StyledAside>
+      {/* <StyledAside>
         <AsideLinks />
         <AsideTags />
-      </StyledAside>
+      </StyledAside> */}
 
       {status === "loading" ? (
         <h1>Await .....fetching data</h1>

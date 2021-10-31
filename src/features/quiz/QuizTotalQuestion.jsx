@@ -12,13 +12,18 @@ const StyledQNButton = styled.button`
   width: 40px;
   height: 40px;
   line-height: 40px;
-  background-color: ${(props) =>
-    props.answered ? `darkcyan` : `rgba(255, 255, 255, 0.1)`};
   display: inline-block;
   text-align: center;
   border-radius: 50%;
-  margin: 0.5rem;
+  margin: 0.2rem;
+  background-color: rgba(255, 255, 255, 0.1);
 
+  &.answered {
+    background-color: darkcyan;
+  }
+
+  /* background-color: ${(props) =>
+    props.answered ? `darkcyan` : `rgba(255, 255, 255, 0.1)`}; */
   ${(props) => props.active && `border-color: darkcyan`}
 `;
 
@@ -35,12 +40,29 @@ export const QuizTotalQuestion = () => {
   const dispatch = useDispatch();
 
   const totalQuestions = quizIds.map((q, i) => {
+    // const checkAnswered = (id, answerObj) => {
+    //   for (let key in answerObj) {
+    //     if (key === id) {
+    //       return true;
+    //       break;
+    //     }
+    //   }
+    // if (answerObj.hasOwnProperty(id)) {
+    //   for (let key in answerObj) {
+    //     if (key === id) {
+    //       return true;
+    //       break;
+    //     }
+    //   }
+    // }
+    // };
+
     return (
       <StyledQNButton
         key={"qOption" + q}
         onClick={() => dispatch(specificQuiz(i))}
         active={current === i}
-        answered={answerSheet.hasOwnProperty(quizIds[current])}
+        className={answerSheet.hasOwnProperty(quizIds[current]) && "answered"}
       >
         {i + 1}
       </StyledQNButton>

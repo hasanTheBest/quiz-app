@@ -18,7 +18,7 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/">
-            <HeroTitle />
+            {/* <HeroTitle /> */}
             <Filter />
             <QuizAns />
             <Footer />
