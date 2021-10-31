@@ -40,23 +40,6 @@ export const QuizTotalQuestion = () => {
   const dispatch = useDispatch();
 
   const totalQuestions = quizIds.map((q, i) => {
-    // const checkAnswered = (id, answerObj) => {
-    //   for (let key in answerObj) {
-    //     if (key === id) {
-    //       return true;
-    //       break;
-    //     }
-    //   }
-    // if (answerObj.hasOwnProperty(id)) {
-    //   for (let key in answerObj) {
-    //     if (key === id) {
-    //       return true;
-    //       break;
-    //     }
-    //   }
-    // }
-    // };
-
     return (
       <StyledQNButton
         key={"qOption" + q}

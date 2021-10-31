@@ -4,8 +4,6 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
 import { QuizContent } from "./QuizContent";
-import { AsideLinks } from "../../components/aside/AsideLinks";
-import { AsideTags } from "../../components/aside/AsideTags";
 import { fetchQuizAsyncThunk } from "./quizSlice";
 
 const StyledQuizContentWrapper = styled.main`
@@ -33,11 +31,6 @@ export const QuizAns = () => {
 
   return (
     <StyledQuizContentWrapper>
-      {/* <StyledAside>
-        <AsideLinks />
-        <AsideTags />
-      </StyledAside> */}
-
       {status === "loading" ? (
         <h1>Await .....fetching data</h1>
       ) : (

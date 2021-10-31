@@ -97,8 +97,13 @@ const StyledPersonMeta = styled.div`
   flex-flow: column wrap;
   padding: 1.5rem;
 
+  ${(p) => p.theme.breakpoints.md} {
+    flex-flow: row-reverse wrap;
+  }
+
   & > .result {
     flex: 1 0 50%;
+
     &.correct {
       flex-basis: 100%;
       background-color: darkgreen;
@@ -115,6 +120,10 @@ const StyledPersonMeta = styled.div`
     }
     &.skipped {
       background-color: darkslateblue;
+    }
+
+    ${(p) => p.theme.breakpoints.md} {
+      flex: 1 0 50%;
     }
 
     /* ${(p) => p.theme.breakpoints.sm} {

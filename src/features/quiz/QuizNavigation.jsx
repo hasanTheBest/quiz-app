@@ -24,6 +24,11 @@ const StyledNavigationBtn = styled.button`
   letter-spacing: 1px;
   color: darkcyan;
   border: none;
+
+  &.submit {
+    background-color: darkslateblue;
+    color: ${(p) => p.theme.color.white_a8};
+  }
 `;
 
 export const QuizNavigation = () => {
@@ -56,13 +61,13 @@ export const QuizNavigation = () => {
   return (
     <>
       <StyledQuizNavigation>
-        <StyledNavigationBtn prev onClick={onClickPrevQuiz}>
+        <StyledNavigationBtn onClick={onClickPrevQuiz}>
           Previous
         </StyledNavigationBtn>
-        <StyledNavigationBtn submit onClick={handleSubmitQuiz}>
+        <StyledNavigationBtn className="submit" onClick={handleSubmitQuiz}>
           submit
         </StyledNavigationBtn>
-        <StyledNavigationBtn next onClick={onClickNextQuiz}>
+        <StyledNavigationBtn onClick={onClickNextQuiz}>
           Next
         </StyledNavigationBtn>
       </StyledQuizNavigation>

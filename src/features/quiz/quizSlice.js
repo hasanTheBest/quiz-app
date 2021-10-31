@@ -47,15 +47,10 @@ const quizSlice = createSlice({
       if (ans === "true") {
         state.score++;
       }
-
-      // Increase Current value
-      if(state.current < state.ids.length - 1) {
-        state.current++;
-      }
     },
 
     nextQuiz: (state) => {
-       if(state.current < state.ids.length - 1) {
+      if (state.current < state.ids.length - 1) {
         state.current++;
       }
     },
@@ -67,9 +62,8 @@ const quizSlice = createSlice({
     },
 
     specificQuiz: (state, action) => {
-      state.current = action.payload
+      state.current = action.payload;
     },
-
   },
   extraReducers: (builder) => {
     builder
@@ -86,7 +80,8 @@ const quizSlice = createSlice({
   },
 });
 
-export const { justifyQuizAnswer, nextQuiz, prevQuiz, specificQuiz } = quizSlice.actions;
+export const { justifyQuizAnswer, nextQuiz, prevQuiz, specificQuiz } =
+  quizSlice.actions;
 export const selectCurrent = (state) => state.quiz.current;
 export const selectScore = (state) => state.quiz.score;
 export const selectAnswerSheet = (state) => state.quiz.answerSheet;
