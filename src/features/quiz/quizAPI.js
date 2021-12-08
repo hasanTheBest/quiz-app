@@ -1,8 +1,8 @@
 // import initialQuiz from "./../../markup/quizapi.json"
 
 export const fetchQuiz = async (endpoint) => {
-  // const url = new URL("https://quizapi.io/api/v1/questions");
-  const url = new URL("http://localhost:3000/markup/quizapi.json");
+  const url = new URL("https://quizapi.io/api/v1/questions");
+  // const url = new URL("http://localhost:3000/markup/quizapi.json");
 
   const { category, difficulty, limit, tags } = Boolean(endpoint)
     ? endpoint
